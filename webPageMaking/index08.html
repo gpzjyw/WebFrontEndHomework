@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>《页面制作》期末考试2</title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+				border: 0px;
+			} 
+			form{
+				margin: 10px;
+			}
+			.theTitle{
+				font: "微软雅黑";
+				font-size: 14px;
+				font-weight: bold;
+				line-height: 16px;
+				margin-bottom: 15px;
+			}
+			.list1{
+				font-family: "宋体";
+				font-size: 12px;
+			}
+			.theInput{
+				width: 200px;
+				height: 20px;
+				border: 1px #ddd solid;
+				box-sizing: border-box;
+				margin-bottom: 15px;
+			}
+			.theSubmit{
+				font-size: 12px;
+				font-family: "宋体";
+				color: white;
+				background-color: deepskyblue;
+				border: 0px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="/login" method="post">
+			<p class="theTitle">登录网易通行证</p>
+			<table border="0px" cellspacing="0px" cellpadding="0px">
+				<tr>
+					<td width="60px">
+						<p class="list1">用户名：</p>
+					</td>
+					<td>
+						<input type="text" class="theInput">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p class="list1">密码：</p>
+					</td>
+					<td>
+						<input type="text" class="theInput">
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input class="theSubmit" type="submit" value="登录" width="40px" height="20px" >
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

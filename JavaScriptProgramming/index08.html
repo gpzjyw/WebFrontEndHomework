@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript程序设计:进阶篇单元作业3</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			if(typeof Function.prototype.bind != "function"){
+				Function.prototype.bind = function(obj){
+					var _self = this;
+					var args = arguments;
+					return function(){
+						_self.apply(obj, Array.prototype.slice.call(args, 1));
+					}
+				};
+			}
+		</script>
+	</body>
+</html>

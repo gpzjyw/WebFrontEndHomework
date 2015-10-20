@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript程序设计:进阶篇单元作业2</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			if(typeof Object.create != "function"){
+				Object.create = function(proto){
+					function Fuc(){}
+					Fuc.prototype = proto;
+					var p = new Fuc(proto);
+					return p;
+				};
+			}
+		</script>
+	</body>
+</html>

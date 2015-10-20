@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript程序设计:基础篇单元作业5</title>
+		<script type="text/javascript">
+			function escapeHTML(htmlStr){
+				var str = htmlStr;
+				var output = str.replace(/[><"&]/g,function(m0){
+					switch(m0){
+						case '<': return '&lt;';
+						case '>': return '&gt;';
+						case '&': return '&amp;';
+						case '"': return '&quot;';
+					}
+				})
+				return output;
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

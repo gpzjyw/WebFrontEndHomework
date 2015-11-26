@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM编程艺术：基础篇的单元作业3</title>
+	</head>
+	<body>
+		<div id="div" style="color: black;width: 200px;height: 200px;font-size: 100px;">
+			hello
+		</div>
+		<script type="text/javascript">
+			function fadeout(element){
+				var i = 100;
+				var step = function(){
+					if(i>0){
+						i--;
+					}else{
+						clearInterval(interval);
+					}
+					element.style["opacity"] = 0.01*i;
+				}
+				interval = setInterval(step,10);
+			}
+		</script>
+	</body>
+</html>

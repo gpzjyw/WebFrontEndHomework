@@ -6,7 +6,42 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			
+			function formatDate(date, pattern){
+				var str="";
+				//add0函数用于在数字0-9之前加0
+				function add0(i){
+					if(i<10){ 
+						return "0" + i;
+					}
+					return i;
+				}
+				
+				var year = date.getFullYear();
+				var month = add0(date.getMonth()+1);
+				var day = add0(date.getDate());
+				var hour = add0(date.getHours());
+				var minute = add0(date.getMinutes());
+				var second = add0(date.getSeconds());
+				
+				switch (pattern){
+					case "yyyy":
+						str = year;
+						break;
+					case "yyyy-MM-dd":
+						str = year + "-" + month + "-" + day;
+						break;
+					case "yyyy-MM-dd HH":
+						str = year + "-" + month + "-" + day + " " + hour;
+						break;
+					case "yyyy-MM-dd HH:mm:ss":
+						str = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+						break;
+					default:
+						str = "wrong pattern";
+						break;
+				}
+				return str;
+			}
 		</script>
 	</body>
 </html>

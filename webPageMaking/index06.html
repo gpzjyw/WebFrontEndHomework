@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>CSS的单元作业3</title>
-		<style type="text/css">
-			.slide{ width:200px; height:100px; position: relative; background:#bdd7ee;}
-.pointer{ position:absolute; bottom:10px; right:5px;}
-.pointer i{ width:10px; height:10px; border-radius:10px; background:#000; margin-right:5px; display:block; float:left;}
-i.current{width:10px; height:10px; border-radius:10px; background:#fff;}
-		</style>
-	</head>
-	<body>
-		<div class="slide">
-			
-			<div class="pointer">
-				<i class="current"></i>
-				<i></i>
-				<i></i>
-			</div>
-		</div>
-	</body>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS的单元作业3</title>
+        <style type="text/css">
+            *{
+                margin: 0px;
+                padding: 0px;
+                border: 0px;   
+            }
+            .slide{
+                position: relative;
+                width: 200px;
+                height: 100px;
+                background-color: rgb(189,215,238);
+            }
+            .pointer{
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+            }
+            i{
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background-color: black;
+                border-radius: 50%;
+            }
+            .current{
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slide">
+             
+            <div class="pointer">
+                <i class="current"></i>
+                <i></i>
+                <i></i>
+            </div>
+        </div>
+    </body>
 </html>

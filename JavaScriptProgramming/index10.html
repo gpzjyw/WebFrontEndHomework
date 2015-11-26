@@ -6,7 +6,24 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			
+			function myType(param){
+				var a = param;
+				var b = typeof(a);
+				if(b!="object"){return b;}
+				
+				if(a===null){return "null";}
+				
+				if(a instanceof Number){return "number";}
+				if(a instanceof String){return "string";}
+				if(a instanceof Boolean){return "boolean";}
+				
+				if(a instanceof Array){return "Array";}
+				if(a instanceof Date){return "Date";}
+				if(a instanceof RegExp){return "regexp";}
+				if(a instanceof Function){return "function";}
+				
+				return "object";
+			}
 		</script>
 	</body>
 </html>

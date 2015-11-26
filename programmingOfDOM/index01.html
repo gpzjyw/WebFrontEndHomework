@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM编程艺术：基础篇的单元作业1</title>
+	</head>
+	<body>
+		<div id="example">
+  			<p id="p1" class="aaa bbb"></p>
+			<p id="p2" class="aaa ccc"></p>
+			<p id="p3" class="bbb ccc"></p>
+		</div>
+		
+		<script type="text/javascript">
+		//您好，写的比较复杂，请仔细看下，可以在第一个if的括号中的开头加入“！”，验证IE下的兼容问题
+			function getElementsByClassName(element, names){
+				if(element.getElementsByClassName){
+					return element.getElementsByClassName(names);
+				}else{
+					var allElements = element.getElementsByTagName("*");
+					//取出element下的所有元素
+					var test = names.split(" ");
+					//将names以空格为分割符分成一个数组
+					var	nodelist = [];
+					//定义返回的数组
+					for(var i = 0; i < allElements.length; i++){
+						var beTested = allElements[i].className.split(" ");
+						//将元素中的className以空格为分割符分成一个数组
+						var flag = classHasAllNames(beTested,test);
+						if(flag){
+							nodelist.push(allElements[i]);
+						}
+					}
+					return nodelist;
+				}
+			}
+			//该函数用于检测数组classes是否包含数组Names中的所有值
+			function classHasAllNames(classes,Names){
+				var flag1 = 0;
+				for(var j = 0;j < Names.length; j++){
+					for(var k = 0; k < classes.length; k++){
+						if(Names[j]==classes[k]){
+							flag1=1;
+						}
+					}
+					if(flag1==0){
+						return 0;
+					}
+					flag1 = 0;
+				}
+				return 1;
+			}
+			
+			example = document.getElementById("example");
+			
+			console.log(getElementsByClassName(example, "aaa"));
+			console.log(getElementsByClassName(example, "bbb ccc"));
+			console.log(getElementsByClassName(example, "ccc bbb"));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM编程艺术：基础篇的单元作业2</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function getCookies(){
+				var cookieObject = {};
+				var cookie = document.cookie;
+				if(cookie===""){
+					return cookieObject;
+				}
+				var cookieArr = cookie.split("; ");
+				for(var i = 0; i < cookieArr.length; i++){
+					var item = cookieArr[i];
+					var index = item.indexOf("=");
+					var name = item.substring(0, index);
+					var value = item.substring(index+1);
+					cookieObject[name] = value;
+				}
+				return cookieObject;
+			}
+		</script>
+	</body>
+</html>

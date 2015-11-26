@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM编程艺术:期末考试主观题1</title>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+	 	<select name="year" id="year">
+	        <option value="0">--</option>
+	        <option value="1999">1999</option>
+	        <option value="2000">2000</option>
+	        <option value="2001">2001</option>
+	    </select>年
+	    <select name="month" id="month">
+	        <option value="0">--</option>
+	        <!--<option value="1">1</option>
+	        <option value="2">2</option>
+	        <option value="3">3</option>
+	        <option value="4">4</option>
+	        <option value="5">5</option>
+	        <option value="6">6</option>
+	        <option value="7">7</option>
+	        <option value="8">8</option>
+	        <option value="9">9</option>
+	        <option value="10">10</option>
+	        <option value="11">11</option>
+	        <option value="12">12</option>-->
+	    </select>月
+	    <select name="date" id="date">
+	        <option value="0">--</option>
+	    </select>日
+	    
+	    <script type="text/javascript">
+			
+	    	var yearSelect = document.getElementById("year");
+	    	var monthSelect = document.getElementById("month");
+	    	var dateSelect = document.getElementById("date");
+//	    	添加事件监听year和month值得变化
+	    	if(yearSelect.addEventListener){
+	    		yearSelect.addEventListener("change",changeMonthFunc);
+	    		yearSelect.addEventListener("change",changeDateFunc);
+	    		monthSelect.addEventListener("change",changeDateFunc);
+	    	}else{
+	    		yearSelect.attachEvent("onchange",changeMonthFunc);
+	    		yearSelect.attachEvent("onchange",changeDateFunc);
+	    		monthSelect.attachEvent("onchange",changeDateFunc);
+	    	}
+	    	
+	    	
+	    	function changeMonthFunc(){
+	    		var monthMax = 0;
+	    		if(yearSelect.value>0){
+	    			monthMax = 12;
+	    		}
+	    		changeMonthList(monthMax);
+	    	}
+	    	
+	    	function changeMonthList(maxValue){
+	    		for(var i=12; i>0; i--){
+	    			monthSelect.remove(i);
+	    		}
+	    		for(var i=1; i<=maxValue; i++){
+	    			var numToStr = i.toString();
+	    			var option = new Option(numToStr,numToStr);
+	    			monthSelect.add(option);
+	    		}
+	    	}
+	    	
+	    	function changeDateFunc(){
+	    		var dateMax=0;
+	    		if(yearSelect.value>0 && monthSelect.value>0){
+	    			if((yearSelect.value=="2000") && (monthSelect.value=="2")){
+	    				dateMax=29;
+	    			}else{
+	    				switch(monthSelect.value){
+	    					case "2": dateMax=28; break;
+	    					case "1":
+	    					case "3":
+	    					case "5":
+	    					case "7":
+	    					case "8":
+	    					case "10":
+	    					case "12": dateMax=31; break;
+	    					case "4":
+	    					case "6":
+	    					case "9":
+	    					case "11": dateMax=30; break;
+	    					default: break;
+	    				}
+	    			}
+	    		}
+	    		changeDateList(dateMax);
+	    	}
+	    	
+	    	function changeDateList(maxValue){
+	    		for(var i=31; i>0; i--){
+	    			dateSelect.remove(i);
+	    		}
+	    		for(var i=1; i<=maxValue; i++){
+	    			var numToStr = i.toString();
+	    			var option = new Option(numToStr,numToStr);
+	    			dateSelect.add(option);
+	    		}
+	    	}
+	    	
+	    </script>
+	</body>
+</html>

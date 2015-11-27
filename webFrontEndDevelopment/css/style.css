@@ -123,7 +123,7 @@ body{
 /* 设置产品模块product的css属性 */
 .g-product{
 	width: 100%;
-	height: 1000px;
+	height: 1200px;
 	background-color: #f8f8f8;
 }
 /* 设置产品模块内容区的css属性 */
@@ -134,7 +134,7 @@ body{
 }
 /* 设置内容区左边区块的css属性 */
 .g-product .m-left{
-	width: 960px;
+	width: 980px;
 	float: left;
 }
 /* 设置title模块的css属性 */
@@ -160,8 +160,8 @@ body{
 }
 /* 设置包含所有课程产品的m-product模块 */
 .g-product .m-product{
-	height: 500px;
-	background-color: #FFFFFF;
+	/*height: 500px;*/
+	/*background-color: #F8F8F8;*/
 }
 
 /* 设置右边模块的css属性 */

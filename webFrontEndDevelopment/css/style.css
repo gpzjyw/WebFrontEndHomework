@@ -32,8 +32,10 @@ body{
 .g-top .m-content a{
 	color: #39a030;
 }
-#tips{
+#j-tips{
 	float: right;
+	color: #333333;
+	text-decoration: none;
 }
 /* ------------------------------------- */
 /* 设置导航条nav的css属性 */
@@ -123,7 +125,7 @@ body{
 /* 设置产品模块product的css属性 */
 .g-product{
 	width: 100%;
-	height: 1200px;
+	height: 1550px;
 	background-color: #f8f8f8;
 }
 /* 设置产品模块内容区的css属性 */
@@ -148,7 +150,7 @@ body{
 	margin-bottom: 30px;
 	font: normal 20px/50px "微软雅黑";
 	text-align: center;
-	box-shadow: 0 2px 2px #ccc;
+	box-shadow: 0 2px 2px #CCCCCC;
 }
 #j-product{
 	background-color: #39A030;
@@ -184,7 +186,7 @@ body{
 .g-product .m-right .u-video{
 	padding: 20px;
 	background-color: #FFFFFF;
-	box-shadow: 0 2px 2px #ccc;
+	box-shadow: 0 2px 2px #CCCCCC;
 }
 .g-product .m-right .u-video p{
 	margin-bottom: 9px;
@@ -199,7 +201,37 @@ body{
 	background-color: #FFFFFF;
 	box-shadow: 0 2px 2px #ccc;
 }
-
+.g-product .m-right .m-list .f-clear{
+	margin-bottom:20px;
+}
+.g-product .m-right .m-list .u-img{
+	width: 50px; 
+	height: 50px;
+	float: left;
+}
+.g-product .m-right .m-list .u-container{
+	display: inline-block;
+	width: 125px;
+}
+.g-product .m-right .m-list .u-title{
+	display: inline-block;
+	margin: 0 0 5px 10px;
+	width: 123px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font: 14px '微软雅黑';
+	text-decoration: none;
+}
+.g-product .m-right .m-list .u-person{
+	margin-left: 10px;
+}
+.g-product .m-right .m-list .u-num{
+	color: #BBBBBB;
+}
+#j-hotlist{
+	margin-bottom: -20px;
+}
 /* ------------------------------------- */
 /* 设置底部栏的css属性 */
 .g-foot{

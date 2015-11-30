@@ -1,3 +1,38 @@
+//获得cookie
+function getcookie () {
+    var cookie = {};
+    var all = document.cookie;
+    if (all === '')
+        return cookie;
+    var list = all.split('; ');
+    for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        var p = item.indexOf('=');
+        var name = item.substring(0, p);
+        name = decodeURIComponent(name);
+        var value = item.substring(p + 1);
+        value = decodeURIComponent(value);
+        cookie[name] = value;
+    }
+    return cookie;
+}
+//设置本地cookie
+function setCookie (name, value, expires, path, domain, secure) {
+    var cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+    if (expires)
+        cookie += '; expires=' + expires.toGMTString();
+    if (path)
+        cookie += '; path=' + path;
+    if (domain)
+        cookie += '; domain=' + domain;
+    if (secure)
+        cookie += '; secure=' + secure;
+    document.cookie = cookie;
+}
+
+
+
+
 getHotList();
 getClassList(1,20,10);
 
@@ -85,6 +120,7 @@ function checkUser(userName,password){
 //	xhr.send(userName,password);
 }
 
+//根据获得的数据创建最热排行列表
 function createHotList(text){
 	var hotList = document.getElementById("j-hotlist");
 	for(var i=0; i<10; i++){
@@ -97,18 +133,18 @@ function createHotList(text){
 		var span = document.createElement("span");
 
 		li.className = "f-clear";
-		if(i<9) {li.style.cssText = "margin-bottom:20px;"}
+		img1.className = "u-img";
+		div.className = "u-container";
+		a.className = "u-title";
+		img2.className = "u-person";
+		span.className = "u-num";
+		
 		img1.src = data.smallPhotoUrl;
-		img1.style.cssText = "width:50px; height:50px; float:left;";
-		div.style.cssText = "display:inline-block; width:125px;";
 		a.innerHTML = data.name;
 		a.href = data.providerLink;
 		a.title = data.name;
-		a.style.cssText = "display:inline-block; margin-left:10px; width:123px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font:14px '微软雅黑'; text-decoration:none;";
 		img2.src = "pic/personhead.png";
-		img2.style.cssText = "margin-left:10px";
-		span.innerHTML = "  "+data.learnerCount;
-		span.style.cssText = "color:#bbbbbb;";
+		span.innerHTML = "  " + data.learnerCount;
 
 		li.appendChild(img1);
 		li.appendChild(div);
@@ -126,28 +162,29 @@ function createProductList(text){
 		var data = text[i];
 		var div1 = document.createElement("div");
 		var img1 = document.createElement("img");
-		var a = document.createElement("a");
+		var h3 = document.createElement("h3");
 		var p = document.createElement("p");
 		var div2 = document.createElement("div");
 		var img2 = document.createElement("img");
 		var span1 = document.createElement("span");
 		var span2 = document.createElement("span");
 
-		div1.style.cssText = "display:inline-block; margin:0px 20px 20px 0px; width:225px; height228px; background-color:#FFFFFF;";
+		div1.style.cssText = "display:inline-block; margin:0px 20px 20px 0px; width:225px; box-shadow: 0 2px 2px #CCCCCC; background-color:#FFFFFF;";
 		img1.src = data.bigPhotoUrl;
 		img1.style.cssText = "width:223px; margin:1px;";
-		a.innerHTML = data.name;
-		a.style.cssText = "";
+		h3.innerHTML = data.name;
+		h3.style.cssText = "margin:10px 0 10px 2px; width:225px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font:12px '微软雅黑'; text-decoration:none;";
 		p.innerHTML = data.provider;
-		div2.style.cssText = "";
+		p.style.cssText = "margin:0 0 10px 2px; font:12px '微软雅黑'; color:#BBBBBB;";
+		div2.style.cssText = "display: inline-block;  margin:0 0 10px 2px; border: 1px solid #BBBBBB; border-radius: 2px; color: #BBBBBB;";
 		img2.src = "pic/personhead.png";
-		span1.innerHTML = data.learnerCount;
+		span1.innerHTML = "  "+ data.learnerCount;
 		span1.style.cssText = "";
-		span2.innerHTML = "¥ "+data.price;
-		span2.style.cssText = "";
+		span2.innerHTML = "¥ "+ data.price;
+		span2.style.cssText = "display: block; margin:0 0 10px 2px; color: #ff3f00;";
 
 		div1.appendChild(img1);
-		div1.appendChild(a);
+		div1.appendChild(h3);
 		div1.appendChild(p);
 		div1.appendChild(div2);
 		div2.appendChild(img2);

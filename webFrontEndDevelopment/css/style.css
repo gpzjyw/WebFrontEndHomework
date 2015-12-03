@@ -2,6 +2,7 @@
  * 避免使用属性：flex，transform
  */
 
+/* 设置全局属性 */
 a:hover{
 	text-decoration:underline;
 }
@@ -42,26 +43,50 @@ body{
 .g-nav{
 	width: 1206px;
 	margin: 30px auto 37px;
-	
 }
 .g-nav img{
 	vertical-align: text-bottom;
 }
 .g-nav .m-title{
-	display: inline-block;
+	float: left;
 }
-.g-nav .u-attention{
+.g-nav .m-title .u-follow{
 	display: inline-block;
+	/*display: none;*/
 	width: 54px;
-	height: 22px;
-	font: bold 12px/22px "微软雅黑";
+	height: 21px;
+	margin: auto 14px auto 30px;
+	font: bold 12px/21px "微软雅黑";
+	border: 1px solid #FFFFFF;
+	text-align: center;
 	background-color: #21A557;
+}
+.g-nav .m-title .u-follow:hover{
+	background-color: #2fb556;
+}
+.g-nav .m-title .u-follow a{
+	font: normal 12px/21px "微软雅黑";
 	color: #FFFFFF;
 }
-.g-nav .u-attention:hover{
-	background-color: #2fb556;
-	color: #FFFFFF;
+.g-nav .m-title .u-follow a:hover{
 	text-decoration: none;
+}
+.g-nav .m-title .u-followed{
+	display: inline-block;
+	/*display: none;*/
+	width: 106px;
+	height: 21px;
+	margin: auto 14px auto 30px;
+	font: normal 12px/21px "微软雅黑";
+	border: 1px solid #EFEFEF;
+	text-align: center;
+	color: #333333;
+}
+.g-nav .m-title .u-followed span{
+	color: #EFEFEF;
+}
+.g-nav .m-title .u-followed a:hover{
+	color: #21A557;
 }
 .g-nav .m-edu{
 	display: inline-block;
@@ -262,7 +287,80 @@ body{
 	font: 14px/30px "微软雅黑";
 	color: #999999;
 }
-
+/* ------------------------------------- */
+/* 设置遮罩的css属性 */
+.g-mask{
+	/*display: none;*/
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	z-index: 998;
+	background-color: #333333;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+/* ------------------------------------- */
+/* 设置登入栏的css属性 */
+.g-login{
+	/*display: none;*/
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	z-index: 999;
+}
+.g-login .m-location{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 387px;
+	height: 288px;
+}
+.g-login .m-location .m-login{
+	position: absolute;
+	left: -50%;
+	top: -50%;
+	width: 387px;
+	height: 288px;
+	background: #FFFFFF;
+}
+.g-login .m-location .m-login .f-clear{
+	height: 10px;
+}
+.g-login .m-location .m-login a{
+	float: right;
+	font-size: 18px;
+	color: #5A5A5A;
+}
+.g-login .m-location .m-login a:hover{
+	text-decoration: none;
+}
+.g-login .m-location .m-login .m-form{
+	width: 295px;
+	margin: 20px auto 40px auto;
+}
+.g-login .m-location .m-login .m-form p{
+	font: bold 18px "微软雅黑";
+	margin-bottom: 20px;
+}
+.g-login .m-location .m-login .m-form input{
+	display: block;
+	width: 295px;
+	height: 45px;
+	margin-bottom: 15px;
+}
+#j-login{
+	background-color: #2FB556;
+	font: bold 16px "微软雅黑";
+	color: #FFFFFF;
+	border: none;
+	box-shadow: 0 2px 2px #CCCCCC;
+}
 
 
 

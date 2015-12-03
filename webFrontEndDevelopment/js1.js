@@ -1,5 +1,108 @@
+//初始执行函数
+initialAddEvents()
+checkCookieTop();
+checkCookieFollow();
+getHotList();
+getClassList(2,20,10);
+
+//定义打开关闭响应窗口的函数集合
+var switchWindow = {
+	//打开登录窗口
+	openLogin: function (){
+		$_class("g-login")[0].style.display = "block";
+	},
+	//关闭登录窗口
+	closeLogin: function (){
+		$_class("g-login")[0].style.display = "none";
+	},
+	//打开遮罩
+	openMask: function (){
+		$_class("g-mask")[0].style.display = "block";
+	},
+	//关闭遮罩
+	closeMask: function (){
+		$_class("g-mask")[0].style.display = "none";
+	}
+};
+
+//添加初始事件
+function initialAddEvents(){
+	//给id为j-tips的a标签添加事件
+	addEvent($_id("j-tips"), "click", function(){
+		setCookie("topClosed", 1);
+   		checkCookieTop();
+	});
+	//给id为j-attention的a标签添加事件
+	addEvent($_id("j-follow"), "click", function(){
+		if(checkCookieLogin()){
+			setCookie("followSuc", 1);
+			checkCookieFollow();
+		}else{
+			switchWindow.openMask();
+			switchWindow.openLogin();
+		}
+	});
+	//给id为j-attentioned的a标签添加事件
+	addEvent($_id("j-followed"), "click", function(){
+		setCookie("followSuc", 0);
+		checkCookieFollow();
+	});
+	//添加关闭登入窗口的事件
+	addEvent($_id("j-loginclose"), "click", function(){
+		switchWindow.closeLogin();
+		switchWindow.closeMask();
+	});
+	
+}
+
+
+//检查cookie（topClosed）,确定是否关闭相应标签
+function checkCookieTop(){
+	var cookie = getCookie();
+	if(cookie["topClosed"] == "1"){
+		$_class("g-top")[0].style.display = "none";
+	}
+}
+function checkCookieLogin(){
+	var cookie = getCookie();
+	if(cookie["loginSuc"] == "1"){
+		return 1;
+	}else{
+		return 0;
+	}
+}
+//检查cookie（followSuc），确定需要显示和隐藏的标签
+function checkCookieFollow(){
+	var cookie = getCookie();
+	if(cookie["followSuc"] == "1"  && checkCookieLogin()){
+		$_class("u-follow")[0].style.display = "none";
+		$_class("u-followed")[0].style.display = "inline-block";
+	}else{
+		$_class("u-follow")[0].style.display = "inline-block";
+		$_class("u-followed")[0].style.display = "none";
+	}
+}
+
+
+//获得特定id和className的元素节点
+function $_id(id){
+	return document.getElementById(id);
+}
+function $_class(className){
+	return document.getElementsByClassName(className);
+}
+//跨浏览器的添加事件函数
+function addEvent(element, type, handler){
+	if (element.addEventListener) {
+		element.addEventListener(type, handler, false);
+	} else if (element.attachEvent){
+		element.attachEvent("on" + type, handler);
+	} else {
+		element["on" + type] = handler;
+	}
+}
 //获得cookie
-function getcookie () {
+function getCookie(){
     var cookie = {};
     var all = document.cookie;
     if (all === '')
@@ -16,8 +119,8 @@ function getcookie () {
     }
     return cookie;
 }
-//设置本地cookie
-function setCookie (name, value, expires, path, domain, secure) {
+//设置cookie
+function setCookie(name, value, expires, path, domain, secure){
     var cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
     if (expires)
         cookie += '; expires=' + expires.toGMTString();
@@ -30,18 +133,13 @@ function setCookie (name, value, expires, path, domain, secure) {
     document.cookie = cookie;
 }
 
-
-
-
-getHotList();
-getClassList(1,20,10);
-
 //给url尾部添加查询参数
 function addURLComponent(url,name,value){
 	url += (url.indexOf("?") == -1 ? "?" : "&");
 	url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
 	return url;
 }
+
 
 //获取课程列表的JSON数据
 function getClassList(pageNo,psize,type){

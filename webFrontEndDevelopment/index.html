@@ -5,9 +5,9 @@
 	<title>网易云课堂微专业</title>
 	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<style type="text/css">
+	<!--<style type="text/css">
 		
-	</style>
+	</style>-->
 </head>
 <body>
 	<div class="g-top">
@@ -18,14 +18,19 @@
 		</div>
 	</div>
 	
-	<div class="g-nav">
+	<div class="g-nav f-clear">
 		<div class="m-title">
 			<img class="u-logo" src="pic/nav/title_logo.png"/>
-			<a class="u-attention">+关注</a>
+			<div class="u-follow">
+				<a id="j-follow">+ 关注</a>
+			</div>
+			<div class="u-followed">
+				√已关注<span>丨</span><a id="j-followed">取消</a>
+			</div>
 			<span>粉丝</span>
 			<span>45</span>
 		</div>
-		<div class="m-edu f-clear">
+		<div class="m-edu">
 			<a href="http://open.163.com/">网易公开课</a>
 			<a href="http://study.163.com/">云课堂</a>
 			<a href="http://www.icourse163.org/">中国大学MOOC</a>
@@ -148,7 +153,27 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<div class="g-login">
+		<div class="m-location">
+			<div class="m-login">
+				<div class="f-clear">
+					<a id="j-loginclose">×</a>
+				</div>
+				<div class="m-form">
+					<p>登录网易云课堂</p>
+					<form id="j-form" action="http://study.163.com /webDev/login.htm" method="post">
+						<input id="" name="userName" type="text" placeholder="账号" required/>
+						<input id="" name="password" type="password" placeholder="密码" required/>
+						<input id="j-login" type="submit" value="登 录"/>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="g-mask"></div>
+	
 	<script src="js1.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

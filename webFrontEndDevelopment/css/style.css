@@ -27,7 +27,7 @@ body{
 	background-color: #f3f3f3;
 	font-size: 12px;
 	line-height: 36px;
-	width: 1206px;
+	width: 1205px;
 	margin: 0 auto;
 }
 .g-top .m-content a{
@@ -41,7 +41,7 @@ body{
 /* ------------------------------------- */
 /* 设置导航条nav的css属性 */
 .g-nav{
-	width: 1206px;
+	width: 1205px;
 	margin: 30px auto 37px;
 }
 .g-nav img{
@@ -105,16 +105,77 @@ body{
 .g-middle{
 	width: 100%;
 }
+
 /* 设置middle中banner的css属性 */
-.g-middle .u-banner1{
+.g-middle .m-banner{
+	position: relative;
+	width: 100%;
+    max-width: 1652px;
+    min-width: 1205px;
+    height: 460px;
+    margin: auto;
+}
+/* 设置banner中的轮播图 */
+.g-middle .m-banner .m-container{
+	width: 100%;
+    margin: auto;
+}
+.g-middle .m-banner .m-container a{
+	display: block;
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+}
+.g-middle .m-banner .u-banner{
 	height: 460px;
+}
+.g-middle .m-banner .u-banner1{
 	background: top center no-repeat url(../pic/banner/banner1.jpg);
+}
+.g-middle .m-banner .u-banner2{
+	background: top center no-repeat url(../pic/banner/banner2.jpg);
+}
+.g-middle .m-banner .u-banner3{
+	background: top center no-repeat url(../pic/banner/banner3.jpg);
+}
+#j-banner1{
+	filter: alpha(opacity=100);
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+	z-index: 300;
+}
+#j-banner2,#j-banner3{
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+}
+
+/* 设置banner中的三个指示小圆点 */
+.g-middle .m-banner .m-location{
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 66px;
+}
+.g-middle .m-banner .m-location .m-point{
+	position: absolute;
+	left: -50%;
+	bottom: 20px;
+	z-index: 500;
+}
+.g-middle .m-banner .m-location .m-point .u-point{
+	display: inline-block;
+	width: 10px;
+	margin: auto 5px;
 }
 
 
 /* 设置middle中展示三个产品的css属性 */
 .g-middle .m-edu{
-	width: 1206px;
+	width: 1205px;
 	margin: 61px auto;
 }
 .g-middle .m-edu > div{
@@ -144,18 +205,18 @@ body{
 /* 设置middle中展示工作环境照片的css属性 */
 .g-middle .m-workpic{
 	height: 222px;
-	background: #f8f8f8 bottom center no-repeat url(../pic/workingPic/workingPic.jpg);
+	background: #F8F8F8 bottom center no-repeat url(../pic/workingPic/workingPic.jpg);
 }
 /* ------------------------------------- */
 /* 设置产品模块product的css属性 */
 .g-product{
 	width: 100%;
 	height: 1550px;
-	background-color: #f8f8f8;
+	background-color: #F8F8F8;
 }
 /* 设置产品模块内容区的css属性 */
 .g-product .m-content{
-	width: 1206px;
+	width: 1205px;
 	margin: 0 auto;
 	padding-top: 81px;
 }
@@ -166,7 +227,7 @@ body{
 }
 /* 设置title模块的css属性 */
 .g-product .m-title{
-	
+	;
 }
 .g-product .m-title h2{
 	display: inline-block;
@@ -189,6 +250,59 @@ body{
 .g-product .m-product{
 	/*height: 500px;*/
 	/*background-color: #F8F8F8;*/
+}
+.g-product .m-product .m-class{
+	display:inline-block; 
+	position: relative;
+	margin: 0px 20px 20px 0px; 
+	width: 225px; 
+	height: 233px;
+	box-shadow: 0 2px 2px #CCCCCC; 
+	background-color:#FFFFFF;
+	z-index: 10;
+}
+.g-product .m-product .m-class:hover{
+	z-index: 0;
+	width: 225px; 
+	height: 233px;
+}
+.g-product .m-product .m-class .m-unhover{
+	display:inline-block; 
+}
+.g-product .m-product .m-class .u-pic{
+	width:223px; 
+	margin:1px;
+}
+.g-product .m-product .m-class .u-title{
+	margin:10px 0 10px 2px;
+	width:225px; 
+	overflow:hidden; 
+	white-space:nowrap; 
+	text-overflow:ellipsis; font:12px '微软雅黑'; 
+	text-decoration:none;
+}
+.g-product .m-product .m-class .u-organization{
+	margin:0 0 10px 2px; 
+	font:12px '微软雅黑'; 
+	color: #BBBBBB;
+}
+.g-product .m-product .m-class .u-container{
+	display: inline-block; 
+	margin:0 0 10px 2px; 
+	border: 1px solid #BBBBBB; 
+	border-radius: 2px; 
+	color: #BBBBBB;
+}
+.g-product .m-product .m-class .u-container .u-person{
+	;
+}
+.g-product .m-product .m-class .u-container .u-personnum{
+	;
+}
+.g-product .m-product .m-class .u-price{
+	display: block; 
+	margin: 0 0 10px 2px; 
+	color: #FF3F00;
 }
 
 /* 设置右边模块的css属性 */
@@ -227,7 +341,7 @@ body{
 	box-shadow: 0 2px 2px #ccc;
 }
 .g-product .m-right .m-list .f-clear{
-	margin-bottom:20px;
+	margin-bottom: 20px;
 }
 .g-product .m-right .m-list .u-img{
 	width: 50px; 
@@ -266,7 +380,7 @@ body{
 	color: #999999;
 }
 .g-foot .m-content{
-	width: 1206px;
+	width: 1205px;
 	margin: 0px auto;
 	padding-top: 82px;
 }
@@ -290,7 +404,7 @@ body{
 /* ------------------------------------- */
 /* 设置遮罩的css属性 */
 .g-mask{
-	/*display: none;*/
+	display: none;
 	position: fixed;
 	left: 0px;
 	right: 0px;
@@ -306,7 +420,7 @@ body{
 /* ------------------------------------- */
 /* 设置登入栏的css属性 */
 .g-login{
-	/*display: none;*/
+	display: none;
 	position: fixed;
 	left: 0px;
 	right: 0px;
@@ -361,6 +475,7 @@ body{
 	border: none;
 	box-shadow: 0 2px 2px #CCCCCC;
 }
+
 
 
 

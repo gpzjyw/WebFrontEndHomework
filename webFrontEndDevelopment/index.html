@@ -40,15 +40,24 @@
 
 	<div class="g-middle">
 		<div class="m-banner">
-			<a href="http://open.163.com/">
-				<div class="u-banner1"></div>
-			</a>
-			<!--<a href="http://study.163.com/">
-				<img src="pic/banner/banner2.jpg" />
-			</a>
-			<a href="http://www.icourse163.org/">
-				<img src="pic/banner/banner3.jpg" />
-			</a>-->
+			<div class="m-container">
+				<a id="j-banner1" href="http://open.163.com/" target="_blank">
+					<div class="u-banner u-banner1"></div>
+				</a>
+				<a id="j-banner2" href="http://study.163.com/" target="_blank">
+					<div class="u-banner u-banner2"></div>
+				</a>
+				<a id="j-banner3" href="http://www.icourse163.org/" target="_blank">
+					<div class="u-banner u-banner3"></div>
+				</a>
+			</div>
+			<div class="m-location">
+				<div class="m-point">
+					<img class="u-point" src="pic/blackpoint.png"/>
+					<img class="u-point" src="pic/whitepoint.png"/>
+					<img class="u-point" src="pic/whitepoint.png"/>
+				</div>
+			</div>
 		</div>
 		
 		<div class="m-edu f-clear">
@@ -57,7 +66,7 @@
 				<div>
 					<h2>网易公开课</h2>
 					<p>推出国内外名校公开课，涉及广泛的学科，名校老师认真讲解深度剖析，网易视频公开课频道搭建起强有力的网络视频教学平台。</p>
-					<a href="http://open.163.com/">了解更多></a>
+					<a href="http://open.163.com/" target="_blank">了解更多></a>
 				</div>
 			</div>
 			<div>
@@ -65,7 +74,7 @@
 				<div>
 					<h2>云课堂</h2>	
 					<p>网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程，创新的个性化学习体验，自由开放的交流互动环境。</p>
-					<a href="http://study.163.com/">了解更多></a>
+					<a href="http://study.163.com/" target="_blank">了解更多></a>
 				</div>
 			</div>
 			<div>
@@ -73,7 +82,7 @@
 				<div>
 					<h2>中国大学MOOC</h2>
 					<p>是爱课程网携手云课堂打造的在线学习平台，每一个有提升愿望的人，都可以在这里学习中国最好的大学课程，学完还能获得认证证书。</p>
-					<a href="http://www.icourse163.org/">了解更多></a>
+					<a href="http://www.icourse163.org/" target="_blank">了解更多></a>
 				</div>
 			</div>
 		</div>
@@ -91,6 +100,22 @@
 					<h2 id="j-programming">编程语言</h2>
 				</div>
 				<div class="m-product" id="j-classlist">
+					
+					<!--<div class="m-class">
+						<div class="m-unhover">
+							<img class="u-pic"/>
+							<h3 class="u-title"></h3>
+							<p class="u-organization"></p>
+							<div class="u-container">
+								<img class="u-person"/>
+								<span class="u-personnum"></span>
+							</div>
+							<span class="u-price"></span>
+						</div>
+						<div class="m-hover">
+							
+						</div>
+					</div>-->
 					
 				</div>
 			</div>
@@ -162,10 +187,11 @@
 				</div>
 				<div class="m-form">
 					<p>登录网易云课堂</p>
-					<form id="j-form" action="http://study.163.com /webDev/login.htm" method="post">
-						<input id="" name="userName" type="text" placeholder="账号" required/>
-						<input id="" name="password" type="password" placeholder="密码" required/>
-						<input id="j-login" type="submit" value="登 录"/>
+					<form>
+						<input id="j-userName" name="userName" type="text" placeholder=" 账号" required/>
+						<input id="j-passWord" name="password" type="password" placeholder=" 密码" required/>
+						<input id="j-login" type="button" value="登 录"/>
+						<!--<button id="j-login">登 录</button>-->
 					</form>
 				</div>
 			</div>
@@ -174,6 +200,7 @@
 	
 	<div class="g-mask"></div>
 	
-	<script src="js1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/md5-min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

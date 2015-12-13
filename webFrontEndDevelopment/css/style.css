@@ -4,7 +4,7 @@
 
 /* 设置全局属性 */
 a:hover{
-	text-decoration:underline;
+	text-decoration: underline;
 }
 body{
 	font-family: "微软雅黑" helvetica;
@@ -97,7 +97,7 @@ body{
 	margin-left: 50px;
 }
 .g-nav .m-edu a:hover{
-	color: #39a030;
+	color: #39A030;
 	text-decoration: none;
 }
 /* ------------------------------------- */
@@ -105,7 +105,6 @@ body{
 .g-middle{
 	width: 100%;
 }
-
 /* 设置middle中banner的css属性 */
 .g-middle .m-banner{
 	position: relative;
@@ -229,7 +228,7 @@ body{
 .g-product .m-title{
 	;
 }
-.g-product .m-title h2{
+.g-product .m-title a{
 	display: inline-block;
 	width: 200px;
 	height: 50px;
@@ -237,14 +236,15 @@ body{
 	font: normal 20px/50px "微软雅黑";
 	text-align: center;
 	box-shadow: 0 2px 2px #CCCCCC;
+	text-decoration: none;
 }
-#j-product{
+.g-product .m-title .u-click{
 	background-color: #39A030;
-	color: #FFFFFF;
+	color: #FFFFFF;	
 }
-#j-programming{
+.g-product .m-title .u-unclick{
 	background-color: #FFFFFF;
-	margin-left: -3px;
+	color: #333333;
 }
 /* 设置包含所有课程产品的m-product模块的课程卡片的css属性 */
 .g-product .m-product{
@@ -375,6 +375,8 @@ body{
 /* 设置翻页器的css属性 */
 .g-product .m-product .m-page{
 	display: inline-block;
+	float: right;
+    margin-right: 16px;
 	text-align: center;
 }
 .g-product .m-product .m-page a,i{
@@ -552,12 +554,12 @@ body{
 .g-login .m-location .m-login .f-clear{
 	height: 10px;
 }
-.g-login .m-location .m-login a{
+.g-login .m-location .m-login .f-clear a{
 	float: right;
 	font-size: 18px;
 	color: #5A5A5A;
 }
-.g-login .m-location .m-login a:hover{
+.g-login .m-location .m-login .f-clear a:hover{
 	text-decoration: none;
 }
 .g-login .m-location .m-login .m-form{
@@ -581,7 +583,50 @@ body{
 	border: none;
 	box-shadow: 0 2px 2px #CCCCCC;
 }
-
+/* ------------------------------------- */
+/* 设置播放视频窗口的css属性 */
+.g-video{
+	display: none;
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	z-index: 999;
+}
+.g-video .m-location{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 952px;
+	height: 630px;
+}
+.g-video .m-location .m-video{
+	position: absolute;
+	left: -50%;
+	top: -50%;
+	width: 952px;
+	height: 630px;
+	background: #FFFFFF;
+}
+.g-video .m-location .m-video .f-clear{
+	height: 10px;
+}
+.g-video .m-location .m-video .f-clear a{
+	float: right;
+	font-size: 18px;
+	color: #5A5A5A;
+}
+.g-video .m-location .m-video .f-clear a:hover{
+	text-decoration: none;
+}
+.g-video .m-location .m-video .u-video{
+	margin: 30px 30px 40px 30px;
+}
+.g-video .m-location .m-video .u-video p{
+	font: normal 18px "微软雅黑";
+	margin-bottom: 20px;
+}
 
 
 

@@ -8,33 +8,42 @@ getClassList(1,20,10);
 //定义打开关闭响应窗口的函数集合
 var switchWindow = {
 	//打开登录窗口
-	openLogin: function (){
+	openLogin: function(){
 		$_class("g-login")[0].style.display = "block";
 	},
 	//关闭登录窗口
-	closeLogin: function (){
+	closeLogin: function(){
 		$_class("g-login")[0].style.display = "none";
 	},
+	//打开视频播放窗口
+	openVideo: function(){
+		$_class("g-video")[0].style.display = "block";
+	},
+	//关闭视频播放窗口
+	closeVideo:function(){
+		$_class("g-video")[0].style.display = "none";
+	},
 	//打开遮罩
-	openMask: function (){
+	openMask: function(){
 		$_class("g-mask")[0].style.display = "block";
 	},
 	//关闭遮罩
-	closeMask: function (){
+	closeMask: function(){
 		$_class("g-mask")[0].style.display = "none";
 	}
 };
 //定义轮播动画的暂停播放的信号
 var pauseSign = 0;
+var classType = 10;
 
 //添加初始事件
 function initialAddEvents(){
-	//给id为j-tips的a标签添加事件
+	//点击后关闭顶部tips，且设置cookie
 	addEvent($_id("j-tips"), "click", function(){
 		setCookie("topClosed", 1);
    		checkCookieTop();
 	});
-	//给id为j-follow的a标签添加事件
+	//点击关注之后，根据cookie判断是否弹出登录窗口
 	addEvent($_id("j-follow"), "click", function(){
 		if(checkCookieLogin()){
 			getAttention();
@@ -43,25 +52,25 @@ function initialAddEvents(){
 			switchWindow.openLogin();
 		}
 	});
-	//给id为j-followed的a标签添加事件
+	//点击取消之后，取消关注，并设置cookie
 	addEvent($_id("j-followed"), "click", function(){
 		setCookie("followSuc", 0);
 		checkCookieFollow();
 	});
-	//添加关闭登录窗口的事件
+	//添加x关闭登录窗口
 	addEvent($_id("j-loginclose"), "click", function(){
 		switchWindow.closeLogin();
 		switchWindow.closeMask();
 	});
-	//提
+	//提交登录窗口验证
 	addEvent($_id("j-login"), "click", function(){
 		var userName = $_id("j-userName").value;
 		var passWord = $_id("j-passWord").value;
 		checkUser(userName, passWord);
 	});
-	//
+	//页面加载完毕后开始加载banner动画
 	addEvent(window, "load", bannerAnimation);
-	
+	//鼠标悬停到banner上和离开banner触犯的banner动画暂停信号
 	addEvent($_class("u-banner")[0], "mouseover", function(){
 		pauseSign = 1;
 	});
@@ -80,8 +89,27 @@ function initialAddEvents(){
 	addEvent($_class("u-banner")[2], "mouseout", function(){
 		pauseSign = 0;
 	});
-	
-	
+	//点击“产品设计”或“编程语言”切换tab
+	addEvent($_id("j-product"), "click", function(){
+		getClassList(1,20,10);
+		$_id("j-product").className = "u-click";
+		$_id("j-programming").className = "u-unclick";
+	});
+	addEvent($_id("j-programming"), "click", function(){
+		getClassList(1,20,20);
+		$_id("j-programming").className = "u-click";
+		$_id("j-product").className = "u-unclick";
+	});
+	//点击图片弹出视频播放窗口
+	addEvent($_id("j-video"), "click", function(){
+		switchWindow.openMask();
+		switchWindow.openVideo();
+	});
+	//点击x关闭视频播放窗口
+	addEvent($_id("j-videoclose"), "click", function(){
+		switchWindow.closeMask();
+		switchWindow.closeVideo();
+	});
 }
 
 //****************************************************************//
@@ -143,13 +171,32 @@ function removeEvent(element, type, handler){
 		element["on" + type] = null;
 	}
 }
+//跨浏览器获取/设置标签的自定义属性,自定义属性均加上data-前缀
+function setDataset(element, attr, value){
+	if(element.dataset){
+		element.dataset[attr] = value;
+	} else if(element.setAttribute) {
+		element.setAttribute("data-" + attr, value);
+	} else {
+		element["data-" + attr] = value;
+	}
+}
+function getDataset(element, attr){
+	if(element.dataset){
+		return element.dataset[attr];
+	} else if(element.getAttribute) {
+		return element.getAttribute("data-" + attr);
+	} else {
+		return element["data-" + attr];
+	}
+}
 //获得cookie
 function getCookie(){
     var cookie = {};
     var all = document.cookie;
     if (all === "")
         return cookie;
-    var list = all.split(";" );
+    var list = all.split("; ");
     for (var i = 0; i < list.length; i++) {
         var item = list[i];
         var p = item.indexOf("=");
@@ -186,14 +233,15 @@ function addURLComponent(url, name, value){
 //****************************************************************//
 //获取课程列表的JSON数据
 function getClassList(pageNo, psize, type){
+	classType = type;
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4){
 			if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
 				var text = JSON.parse(xhr.responseText);
 				globalTemp2 = text;
+				globalType = type;
 				createProductList(text);
-				createPages(text);
 			} else {
 				console.log("Request was unsuccessful：" + xhr.status);
 			}
@@ -310,6 +358,12 @@ function createHotList(text){
 		hotList.appendChild(li);
 	}
 }
+
+//根据获得的数据更新最热排行榜
+//function updataHotList(text){
+//	var 
+//}
+
 //根据获得的数据创建产品列表
 function createProductList(text){
 	var productList = $_id("j-classlist");
@@ -412,41 +466,53 @@ function createProductList(text){
 		
 		productList.appendChild(div1);
 	}
-		//创建页码器
-		var maxPage = text["totalPage"];
-		var pageIndex = text["pagination"]["pageIndex"];
-		var div6 = document.createElement("div");
-		div6.className = "m-page";
-		var a_left = document.createElement("a");
-		a_left.className = "u-left";
-		a_left.innerHTML = "<";
-		div6.appendChild(a_left);
-		
-		for(var i=1;i<maxPage;i++){
-			if(i == pageIndex){
-				var i1 = document.createElement("i");
-				i1.innerHTML = i;
-				i1.className = "u-selected";
-				div6.appendChild(i1);
-			} else {
-				var a3 = document.createElement("a");
-				a3.innerHTML = i;
-				a3.className = "u-page";
-				addEvent(a3, "click", function(num){
-					return function(){
-						getClassList(num, 20, 10);
-					};
-				}(i));
-				div6.appendChild(a3);
-			}
+	
+	//创建页码器
+	var maxPage = text["totalPage"];
+	var pageIndex = text["pagination"]["pageIndex"];
+	var div6 = document.createElement("div");
+	div6.className = "m-page";
+	//创建左翻页
+	var a_left = document.createElement("a");
+	a_left.className = "u-left";
+	a_left.innerHTML = "<";
+	addEvent(a_left, "click", function(num){
+		return function(){
+			getClassList(num, 20, classType);
+		};
+	}(pageIndex-1));
+	div6.appendChild(a_left);
+	//创建数字页码
+	for(var i=1;i<=maxPage;i++){
+		if(i == pageIndex){
+			var i1 = document.createElement("i");
+			i1.innerHTML = i;
+			i1.className = "u-selected";
+			div6.appendChild(i1);
+		} else {
+			var a3 = document.createElement("a");
+			a3.innerHTML = i;
+			a3.className = "u-page";
+			addEvent(a3, "click", function(num){
+				return function(){
+					getClassList(num, 20, classType);
+				};
+			}(i));
+			div6.appendChild(a3);
 		}
-		
-		var a_right = document.createElement("a");
-		a_right.className = "u-right";
-		a_right.innerHTML = ">";
-		div6.appendChild(a_right);
-		
-		productList.appendChild(div6);
+	}
+	//创建右翻页
+	var a_right = document.createElement("a");
+	a_right.className = "u-right";
+	a_right.innerHTML = ">";
+	addEvent(a_right, "click", function(num){
+		return function(){
+			getClassList(num, 20, classType);
+		};
+	}(pageIndex+1));
+	div6.appendChild(a_right);
+	
+	productList.appendChild(div6);
 }
 
 

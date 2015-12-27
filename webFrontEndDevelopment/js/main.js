@@ -109,6 +109,8 @@ function initialAddEvents(){
 	addEvent($_id("j-videoclose"), "click", function(){
 		switchWindow.closeMask();
 		switchWindow.closeVideo();
+		$_id("j-videoplay").pause();
+		$_id("j-videoplay").currentTime = 0;
 	});
 }
 

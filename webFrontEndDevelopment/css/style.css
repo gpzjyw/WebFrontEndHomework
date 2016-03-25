@@ -110,7 +110,6 @@ body{
 	position: relative;
 	width: 100%;
     max-width: 1652px;
-    min-width: 1205px;
     height: 460px;
     margin: auto;
 }
@@ -170,8 +169,6 @@ body{
 	width: 10px;
 	margin: auto 5px;
 }
-
-
 /* 设置middle中展示三个产品的css属性 */
 .g-middle .m-edu{
 	width: 1205px;
@@ -266,7 +263,7 @@ body{
 	height: 233px;
 }
 .g-product .m-product .m-class .m-unhover .u-pic{
-	width: 223px; 
+	width: 223px;
 	height: 126px;
 	margin: 1px;
 }
@@ -627,28 +624,16 @@ body{
 	font: normal 18px "微软雅黑";
 	margin-bottom: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* ------------------------------------- */
+/* 小屏布局方案  */
+@media screen and (max-width: 1205px) {
+	.g-top, .g-nav, .g-middle .m-edu, .g-product .m-content, .g-foot .m-content {
+		width: 960px;
+	}
+	.g-product .m-content .m-left {
+		width: 735px;
+	}
+	.g-product {
+		height: 2010px;
+	}
+}

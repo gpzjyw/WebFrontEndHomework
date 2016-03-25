@@ -8,7 +8,7 @@ main.closeTop = (function () {
 		addEvent = main.tools.addEvent,
 		$_id = main.tools.$_id,
 		$_class = main.tools.$_class;
-			
+	
 	checkCookieTop = function () {
 		var cookie = getCookie();
 		if(cookie["topClosed"] == 1){

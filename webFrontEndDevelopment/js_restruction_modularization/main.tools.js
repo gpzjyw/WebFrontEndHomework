@@ -7,7 +7,8 @@ main.tools = (function(){
 		addEvent, 
 		setCookie, 
 		addURLComponent,
-		newElement;
+		newElement,
+		ajax;
 	
 	//获得特定id和className的元素节点
 	$_id = function (id) {
@@ -76,6 +77,26 @@ main.tools = (function(){
 		return ele;
 	};
 	
+	//ajax异步获取数据
+	ajax = function (method, url, data, callback) {
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function () {
+			if ( xhr.readyState == 4 ) {
+				if ( (xhr.status >= 200 && xhr.status < 300) || xhr.status == 304 ) {
+					if ( callback ) {
+						callback( JSON.parse(xhr.responseText) );
+					}
+					return true;
+				} else {
+					console.log("Request was unsuccessful：" + xhr.status);
+					return false;
+				}
+			}
+		};
+		xhr.open(method, url, true);
+		xhr.send(data);
+	};
+	
 	return {
 		$_id 			: $_id,
 		$_class			: $_class,
@@ -83,7 +104,8 @@ main.tools = (function(){
 		addEvent 		: addEvent,
 		setCookie 		: setCookie,
 		addURLComponent : addURLComponent,
-		newElement		: newElement
+		newElement		: newElement,
+		ajax			: ajax
 	};
 	
 }());

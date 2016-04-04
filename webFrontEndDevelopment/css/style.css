@@ -627,7 +627,7 @@ body{
 /* ------------------------------------- */
 /* 小屏布局方案  */
 @media screen and (max-width: 1205px) {
-	.g-top, .g-nav, .g-middle .m-edu, .g-product .m-content, .g-foot .m-content {
+	.g-top .m-content, .g-nav, .g-middle .m-edu, .g-product .m-content, .g-foot .m-content {
 		width: 960px;
 	}
 	.g-product .m-content .m-left {
